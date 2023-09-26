@@ -22,6 +22,25 @@ If you have built an older version from source, make sure to remove the build ar
 
 ## Install
 
+### 在ubuntu20,ros noetic上的安装步骤：
+
+**安装 rosdepc**
+```
+wget http://fishros.com/install -O fishros && bash fishros
+```
+**下载编译程序**
+```
+sudo apt update
+sudo apt install python3-grpcio python3-grpc-tools
+mkdir -p multimaster_ws/src
+cd multimaster/src
+git clone https://github.com/fkie/multimaster_fkie.git multimaster
+rosdepc update
+rosdep install -i --as-root pip:false --reinstall --from-paths multimaster
+catkin build fkie_multimaster
+```
+
+
 The communication between the Node Manager GUI and the Daemon is based on Python [gRPC](https://grpc.io/). If you are using Ubuntu 18.10 or later, you can simply run `sudo apt install python-grpcio python-grpc-tools`. For Ubuntu 18.04 LTS, we provide a [PPA backport of the gRPC libraries](https://launchpad.net/~roehling/+archive/ubuntu/grpc). If your Ubuntu version is older than that, you need to install `grpcio-tools` from [PyPI](https://pypi.org/project/grpcio-tools/).
 
 You can run the following commands to setup a build from source:
