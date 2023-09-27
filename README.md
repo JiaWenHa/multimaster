@@ -33,11 +33,11 @@ wget http://fishros.com/install -O fishros && bash fishros
 sudo apt update
 sudo apt install python3-grpcio python3-grpc-tools
 mkdir -p multimaster_ws/src
-cd multimaster/src
-git clone https://github.com/fkie/multimaster_fkie.git multimaster
+cd multimaster_ws/src
+git clone https://github.com/JiaWenHa/multimaster.git multimaster
 rosdepc update
 rosdep install -i --as-root pip:false --reinstall --from-paths multimaster
-catkin build fkie_multimaster
+catkin_make
 ```
 
 
